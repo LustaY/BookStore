@@ -1,5 +1,5 @@
-﻿//using AutoMapper;
-//using BookStore.API.Configuration;
+﻿using AutoMapper;
+using BookStore.API.Configuration;
 using BookStore.Infrastructure.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,10 +28,10 @@ namespace BookStore.API
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
@@ -41,9 +41,7 @@ namespace BookStore.API
                 });
             });
 
-            services.AddCors();
-
-            //services.ResolveDependencies();
+            services.ResolveDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,8 +63,6 @@ namespace BookStore.API
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
