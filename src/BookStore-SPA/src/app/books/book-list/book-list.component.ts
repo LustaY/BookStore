@@ -72,7 +72,7 @@ export class BookListComponent implements OnInit {
   // }
 
   public searchBooks() {
-    this.searchValueChanged.next();
+    this.searchValueChanged.next(void 0);
   }
 
   private search() {

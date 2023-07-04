@@ -58,7 +58,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   public searchCategories() {
-    this.searchValueChanged.next();
+    this.searchValueChanged.next(void 0);
   }
 
   private search() {
